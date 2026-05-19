@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090B"/>
+      <stop offset="100%" style="stop-color:#18181B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="0" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="100" y1="0" x2="100" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="500" y1="0" x2="500" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="700" y1="0" x2="700" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="1100" y1="0" x2="1100" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="1200" y1="0" x2="1200" y2="630" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="0" y1="500" x2="1200" y2="500" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="#FFFFFF" stroke-width="1"/>
+  </g>
+  
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  
+  <!-- Logo mark - geometric T shape -->
+  <g transform="translate(600, 200)">
+    <rect x="-80" y="-60" width="160" height="24" rx="4" fill="url(#accent)"/>
+    <rect x="-16" y="-36" width="32" height="96" rx="4" fill="url(#accent)"/>
+  </g>
+  
+  <!-- Brand name -->
+  <text x="600" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="#FAFAFA" text-anchor="middle" letter-spacing="-1">TENZOR LABS</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="400" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" fill="#71717A" text-anchor="middle" letter-spacing="4">INGENIERÍA DE PRODUCTO &amp; IA</text>
+  
+  <!-- Bottom accent line -->
+  <rect x="400" y="480" width="400" height="2" fill="#27272A"/>
+  
+  <!-- URL -->
+  <text x="600" y="530" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="16" fill="#52525B" text-anchor="middle">tenzorlabs.cl</text>
+</svg>

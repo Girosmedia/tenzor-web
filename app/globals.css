@@ -1,26 +1,423 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-bricolage);
+  --font-serif: var(--font-instrument);
+  --font-mono: var(--font-jetbrains-mono);
+  --color-shell: #05070a;
+  --color-shell-soft: #071116;
+  --color-panel: #0b1318;
+  --color-panel-soft: #111d23;
+  --color-ink: #fff4df;
+  --color-muted: #9baaa6;
+  --color-dim: #657470;
+  --color-line: #24363d;
+  --color-aqua: #22f1d1;
+  --color-amber: #f8bf4c;
+  --color-lime: #b9ff66;
+  --color-rust: #ff6b35;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: dark;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: var(--color-shell);
+  color: var(--color-ink);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-aqua);
+  color: var(--color-shell);
+}
+
+.landing-canvas {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 8% 12%, color-mix(in srgb, var(--color-aqua) 18%, transparent), transparent 28rem),
+    radial-gradient(circle at 82% 8%, color-mix(in srgb, var(--color-amber) 16%, transparent), transparent 26rem),
+    radial-gradient(circle at 72% 76%, color-mix(in srgb, var(--color-lime) 10%, transparent), transparent 30rem),
+    linear-gradient(180deg, #05070a 0%, #071116 42%, #05070a 100%);
+}
+
+.ambient-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-line) 60%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-line) 60%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-aqua) 10%, transparent), transparent 34rem);
+  background-position: 0 0, 0 0, center;
+  background-size: 72px 72px, 72px 72px, cover;
+  mask-image: radial-gradient(ellipse 80% 68% at 50% 22%, black 0%, transparent 78%);
+  opacity: 0.54;
+  animation: field-drift 24s linear infinite;
+}
+
+.ambient-field::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 244, 223, 0.025) 0 1px, transparent 1px 4px),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06), transparent 16rem);
+  mix-blend-mode: screen;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: reveal-up 0.9s var(--ease-out-expo) forwards;
+}
+
+.cta-primary {
+  color: var(--color-shell);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), transparent 36%),
+    linear-gradient(135deg, var(--color-aqua), var(--color-lime));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-aqua) 35%, transparent),
+    0 22px 60px color-mix(in srgb, var(--color-aqua) 22%, transparent);
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-aqua) 55%, transparent),
+    0 28px 72px color-mix(in srgb, var(--color-aqua) 30%, transparent);
+}
+
+.cta-secondary {
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-panel-soft) 76%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-line) 80%, transparent);
+}
+
+.cta-secondary:hover {
+  color: var(--color-aqua);
+  border-color: color-mix(in srgb, var(--color-aqua) 48%, transparent);
+  transform: translateY(-2px);
+}
+
+.metric-tile,
+.signal-card,
+.process-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-line) 82%, transparent);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--color-panel) 82%, transparent), color-mix(in srgb, var(--color-shell-soft) 72%, transparent)),
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-aqua) 12%, transparent), transparent 18rem);
+  backdrop-filter: blur(18px);
+}
+
+.metric-tile {
+  min-height: 190px;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+}
+
+.signal-card {
+  border-radius: 1.75rem;
+  padding: 1.5rem;
+  transition:
+    transform 0.35s var(--ease-out-expo),
+    border-color 0.35s var(--ease-out-expo),
+    background 0.35s var(--ease-out-expo);
+}
+
+.signal-card::before,
+.process-card::before,
+.cta-stage::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.1) 45%, transparent 56% 100%);
+  transform: translateX(-120%);
+  transition: transform 0.8s var(--ease-out-expo);
+}
+
+.signal-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--color-aqua) 42%, var(--color-line));
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--color-panel-soft) 90%, transparent), color-mix(in srgb, var(--color-shell-soft) 78%, transparent)),
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-aqua) 18%, transparent), transparent 20rem);
+}
+
+.signal-card:hover::before,
+.process-card:hover::before,
+.cta-stage:hover::before {
+  transform: translateX(120%);
+}
+
+.command-deck {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.signal-path {
+  stroke-dasharray: 10 12;
+  animation: dash-flow 12s linear infinite;
+}
+
+.signal-path-delayed {
+  animation-delay: -4s;
+}
+
+.orbit-slow,
+.orbit-reverse {
+  transform-origin: 260px 210px;
+  transform-box: view-box;
+}
+
+.orbit-slow {
+  animation: orbit 18s linear infinite;
+}
+
+.orbit-reverse {
+  animation: orbit 24s linear infinite reverse;
+}
+
+.pulse-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-pulse 3s ease-in-out infinite;
+}
+
+.node-card {
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.26));
+}
+
+.progress-sweep {
+  width: 76%;
+  transform-origin: left;
+  animation: progress-sweep 3.4s ease-in-out infinite;
+}
+
+.capability-chip {
+  border: 1px solid color-mix(in srgb, var(--color-line) 75%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-shell) 54%, transparent);
+  color: var(--color-muted);
+  padding: 0.62rem 0.9rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.layer-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  border: 1px solid color-mix(in srgb, var(--color-line) 70%, transparent);
+  border-radius: 1.35rem;
+  background: color-mix(in srgb, var(--color-panel-soft) 62%, transparent);
+  padding: 1rem;
+}
+
+.layer-row span {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-aqua) 12%, transparent);
+  color: var(--color-aqua);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.layer-row h3 {
+  color: var(--color-ink);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.layer-row p {
+  margin-top: 0.28rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.blueprint-panel {
+  position: relative;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-line) 75%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-line) 75%, transparent) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+  opacity: 0.45;
+}
+
+.blueprint-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 0 24px color-mix(in srgb, var(--color-aqua) 34%, transparent));
+  animation: node-pulse 3.6s ease-in-out infinite;
+}
+
+.blueprint-node {
+  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.3));
+}
+
+.process-card {
+  min-height: 280px;
+  border-radius: 1.6rem;
+  padding: 1.5rem;
+  transition:
+    transform 0.35s var(--ease-out-expo),
+    border-color 0.35s var(--ease-out-expo);
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--color-amber) 44%, var(--color-line));
+}
+
+.process-index {
+  display: inline-flex;
+  color: var(--color-aqua);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.process-card h3 {
+  margin-top: 4.5rem;
+  color: var(--color-ink);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.process-card p {
+  margin-top: 0.9rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+.cta-stage {
+  position: relative;
+}
+
+.cta-stage > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-stage::before,
+.cta-stage::after {
+  z-index: 0;
+}
+
+.cta-stage::after {
+  position: absolute;
+  inset: auto 10% -45% 10%;
+  height: 16rem;
+  content: "";
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-aqua) 28%, transparent), transparent 62%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+@keyframes reveal-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes field-drift {
+  from {
+    background-position: 0 0, 0 0, center;
+  }
+  to {
+    background-position: 72px 72px, -72px 72px, center;
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.4deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(0.4deg);
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -220;
+  }
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.045);
+  }
+}
+
+@keyframes progress-sweep {
+  0%,
+  100% {
+    transform: scaleX(0.42);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
