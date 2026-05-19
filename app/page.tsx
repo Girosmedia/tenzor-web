@@ -82,6 +82,42 @@ const capabilities = [
   "Modernización legacy",
 ];
 
+const systemModules = [
+  {
+    label: "Mecanismo 01",
+    title: "Captura operativa",
+    text: "Convertimos formularios, solicitudes, tickets, documentos y eventos del negocio en datos ordenados desde el primer contacto.",
+  },
+  {
+    label: "Mecanismo 02",
+    title: "Decisión asistida",
+    text: "Diseñamos reglas, scoring y agentes que priorizan casos, recomiendan acciones y reducen decisiones repetitivas.",
+  },
+  {
+    label: "Mecanismo 03",
+    title: "Ejecución automática",
+    text: "Conectamos APIs, bases de datos y herramientas internas para que el sistema haga avanzar el trabajo sin persecución manual.",
+  },
+  {
+    label: "Mecanismo 04",
+    title: "Aprendizaje medible",
+    text: "Cada flujo deja trazas, métricas y evidencia para saber qué mejora, qué se atasca y dónde invertir la siguiente iteración.",
+  },
+];
+
+const footerNav = [
+  { label: "Arquitectura", href: "#arquitectura" },
+  { label: "Sistema", href: "#sistema" },
+  { label: "Método", href: "#metodo" },
+];
+
+const footerServices = [
+  "Producto B2B",
+  "Agentes de IA",
+  "Automatización",
+  "Modernización legacy",
+];
+
 export default function Home() {
   return (
     <main className="landing-canvas min-h-screen overflow-hidden">
@@ -216,24 +252,40 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="blueprint-panel reveal mt-14 overflow-hidden rounded-[2rem] border border-line/80 bg-panel/70 shadow-2xl shadow-black/30 backdrop-blur-xl">
+          <div className="reveal mx-auto mt-14 max-w-4xl">
+            <div className="flex flex-wrap justify-center gap-2">
+              {capabilities.map((capability) => (
+                <span className="capability-chip capability-chip-sm" key={capability}>
+                  {capability}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="blueprint-panel reveal mt-6 overflow-hidden rounded-[2rem] border border-line/80 bg-panel/70 shadow-2xl shadow-black/30 backdrop-blur-xl">
             <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
               <div className="p-6 sm:p-8 lg:p-10">
-                <div className="flex flex-wrap gap-3">
-                  {capabilities.map((capability) => (
-                    <span className="capability-chip" key={capability}>
-                      {capability}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-10 space-y-4">
-                  {layers.map((layer) => (
-                    <div className="layer-row" key={layer.label}>
-                      <span>{layer.label}</span>
-                      <div>
-                        <h3>{layer.title}</h3>
-                        <p>{layer.text}</p>
+                <div className="space-y-4">
+                  {systemModules.map((module, index) => (
+                    <div
+                      className="system-module-card group"
+                      key={module.label}
+                    >
+                      <div className="flex items-start gap-4">
+                        <span className="system-module-index">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <div>
+                          <p className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.24em] text-aqua">
+                            {module.label}
+                          </p>
+                          <h3 className="mt-2 text-xl font-semibold tracking-[-0.04em] text-ink">
+                            {module.title}
+                          </h3>
+                          <p className="mt-3 text-sm leading-6 text-muted">
+                            {module.text}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -301,14 +353,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="relative z-10 border-t border-line/70 px-5 py-8 sm:px-6">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-dim sm:flex-row sm:items-center sm:justify-between">
-          <p>Tenzor Labs © 2026 | Santiago, Chile.</p>
-          <p className="font-mono uppercase tracking-[0.22em]">
-            Software · IA · Automatización
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
@@ -379,10 +424,10 @@ function CommandDeckIllustration() {
         <div className="flex items-center justify-between border-b border-line/70 pb-4">
           <div>
             <p className="font-mono text-[0.66rem] uppercase tracking-[0.28em] text-aqua">
-              live system map
+              tenzor operating room
             </p>
             <h2 className="mt-2 text-xl font-semibold tracking-[-0.04em] text-ink">
-              Autonomous Build Room
+              Señales que se convierten en sistemas
             </h2>
           </div>
           <div className="flex gap-1.5">
@@ -392,124 +437,182 @@ function CommandDeckIllustration() {
           </div>
         </div>
 
-        <svg
-          aria-hidden="true"
-          className="mt-5 h-[330px] w-full sm:h-[390px]"
-          fill="none"
-          viewBox="0 0 520 420"
-        >
-          <defs>
-            <linearGradient id="deckGlow" x1="82" x2="438" y1="64" y2="356">
-              <stop stopColor="var(--color-aqua)" stopOpacity="0.9" />
-              <stop offset="0.5" stopColor="var(--color-amber)" stopOpacity="0.65" />
-              <stop offset="1" stopColor="var(--color-lime)" stopOpacity="0.85" />
-            </linearGradient>
-            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-              <stop stopColor="var(--color-aqua)" stopOpacity="0.8" />
-              <stop offset="1" stopColor="var(--color-aqua)" stopOpacity="0" />
-            </radialGradient>
-          </defs>
+        <div className="mt-5">
+          <svg viewBox="0 0 480 380" fill="none" className="w-full" aria-label="Flujo de señales a sistemas">
+            <defs>
+              <linearGradient id="signalGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="var(--color-aqua)" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="var(--color-lime)" stopOpacity="0.9" />
+              </linearGradient>
+              <linearGradient id="coreGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="var(--color-aqua)" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="var(--color-aqua)" stopOpacity="0.05" />
+              </linearGradient>
+              <linearGradient id="resultGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="var(--color-lime)" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="var(--color-amber)" stopOpacity="0.9" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="glowStrong">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
 
-          <rect
-            width="430"
-            height="300"
-            x="45"
-            y="60"
-            rx="34"
-            stroke="var(--color-line)"
-            strokeOpacity="0.9"
-          />
-          <path
-            className="signal-path"
-            d="M96 300C130 218 178 258 214 178c33-74 86-54 120-30 44 32 57 105 100 72"
-            stroke="url(#deckGlow)"
-            strokeLinecap="round"
-            strokeWidth="2"
-          />
-          <path
-            className="signal-path signal-path-delayed"
-            d="M92 126c54 36 79 18 124 85 35 52 89 63 133 24 42-37 56-8 82 27"
-            stroke="var(--color-aqua)"
-            strokeLinecap="round"
-            strokeOpacity="0.42"
-            strokeWidth="1.5"
-          />
+            {/* Background grid */}
+            <pattern id="miniGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--color-line)" strokeWidth="0.3" opacity="0.3" />
+            </pattern>
+            <rect width="480" height="380" fill="url(#miniGrid)" opacity="0.5" />
 
-          <g className="orbit-slow">
-            <ellipse
-              cx="260"
-              cy="210"
-              rx="148"
-              ry="78"
-              stroke="var(--color-aqua)"
-              strokeOpacity="0.28"
-            />
-            <circle cx="408" cy="210" r="5" fill="var(--color-aqua)" />
-          </g>
-          <g className="orbit-reverse">
-            <ellipse
-              cx="260"
-              cy="210"
-              rx="78"
-              ry="148"
-              stroke="var(--color-amber)"
-              strokeOpacity="0.22"
-            />
-            <circle cx="260" cy="62" r="4" fill="var(--color-amber)" />
-          </g>
-
-          <circle cx="260" cy="210" r="54" fill="url(#nodeGlow)" opacity="0.9" />
-          <circle
-            className="pulse-node"
-            cx="260"
-            cy="210"
-            r="38"
-            fill="var(--color-shell)"
-            stroke="url(#deckGlow)"
-            strokeWidth="2"
-          />
-          <path
-            d="M244 204h32m-26-16 26 16-26 16"
-            stroke="var(--color-ink)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
-
-          {[
-            [116, 126, "CRM"],
-            [404, 132, "AI"],
-            [116, 292, "API"],
-            [398, 304, "OPS"],
-          ].map(([cx, cy, label]) => (
-            <g className="node-card" key={label}>
-              <circle cx={cx} cy={cy} r="30" fill="var(--color-panel-soft)" />
-              <circle cx={cx} cy={cy} r="29" stroke="var(--color-line)" />
-              <text
-                fill="var(--color-ink)"
-                fontFamily="var(--font-jetbrains-mono)"
-                fontSize="12"
-                textAnchor="middle"
-                x={cx}
-                y={Number(cy) + 4}
-              >
-                {label}
-              </text>
+            {/* SIGNAL 01 - Fricción operativa */}
+            <g transform="translate(20, 16)">
+              <rect width="200" height="72" rx="14" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="1" opacity="0.8" />
+              <rect width="200" height="72" rx="14" fill="url(#coreGrad)" opacity="0.4" />
+              <text x="16" y="24" fill="var(--color-aqua)" fontFamily="monospace" fontSize="9" fontWeight="800" letterSpacing="2">SEÑAL 01</text>
+              <text x="16" y="44" fill="var(--color-ink)" fontSize="14" fontWeight="700" letterSpacing="-0.5">Fricción operativa</text>
+              <text x="16" y="60" fill="var(--color-muted)" fontSize="9" fontWeight="600">Horas hundidas en aprobaciones</text>
+              {/* Animated pulse dot */}
+              <circle cx="180" cy="36" r="4" fill="var(--color-rust)" opacity="0.8">
+                <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite" />
+              </circle>
             </g>
-          ))}
-        </svg>
 
-        <div className="grid gap-3 sm:grid-cols-3">
-          {["scope locked", "agent online", "deploy ready"].map((label) => (
-            <div className="rounded-2xl border border-line/70 bg-shell/60 p-3" key={label}>
-              <p className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-dim">
-                {label}
-              </p>
-              <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-line/60">
-                <span className="progress-sweep block h-full rounded-full bg-aqua" />
-              </div>
-            </div>
-          ))}
+            {/* SIGNAL 02 - Contexto disperso */}
+            <g transform="translate(260, 16)">
+              <rect width="200" height="72" rx="14" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="1" opacity="0.8" />
+              <rect width="200" height="72" rx="14" fill="url(#coreGrad)" opacity="0.4" />
+              <text x="16" y="24" fill="var(--color-aqua)" fontFamily="monospace" fontSize="9" fontWeight="800" letterSpacing="2">SEÑAL 02</text>
+              <text x="16" y="44" fill="var(--color-ink)" fontSize="14" fontWeight="700" letterSpacing="-0.5">Contexto disperso</text>
+              <text x="16" y="60" fill="var(--color-muted)" fontSize="9" fontWeight="600">Tickets y reglas en lugares distintos</text>
+              <circle cx="180" cy="36" r="4" fill="var(--color-amber)" opacity="0.8">
+                <animate attributeName="r" values="3;5;3" dur="2.4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.4s" repeatCount="indefinite" />
+              </circle>
+            </g>
+
+            {/* Flow arrow down */}
+            <g transform="translate(230, 96)">
+              <circle cx="10" cy="10" r="10" fill="var(--color-aqua)" opacity="0.15" stroke="var(--color-aqua)" strokeWidth="1">
+                <animate attributeName="opacity" values="0.15;0.3;0.15" dur="1.5s" repeatCount="indefinite" />
+              </circle>
+              <text x="10" y="14" textAnchor="middle" fill="var(--color-aqua)" fontSize="12" fontFamily="monospace">↓</text>
+            </g>
+
+            {/* TENZOR CORE - Central processing */}
+            <g transform="translate(60, 120)">
+              <rect width="360" height="100" rx="18" fill="var(--color-panel)" stroke="var(--color-aqua)" strokeWidth="1.5" opacity="0.9" filter="url(#glow)">
+                <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
+              </rect>
+              <rect width="360" height="100" rx="18" fill="url(#coreGrad)" opacity="0.6" />
+
+              {/* Core label */}
+              <text x="24" y="28" fill="var(--color-aqua)" fontFamily="monospace" fontSize="10" fontWeight="800" letterSpacing="2.5">TENZOR CORE</text>
+              <text x="24" y="50" fill="var(--color-ink)" fontSize="18" fontWeight="700" letterSpacing="-1">Arquitectura que transforma</text>
+              <text x="24" y="72" fill="var(--color-muted)" fontSize="11" fontWeight="600">ruido en flujo ejecutable</text>
+
+              {/* Animated processing bars */}
+              <g transform="translate(240, 20)">
+                <rect width="100" height="6" rx="3" fill="var(--color-line)" opacity="0.5" />
+                <rect width="100" height="6" rx="3" fill="url(#signalGrad)" opacity="0.9">
+                  <animate attributeName="width" values="30;100;30" dur="2.8s" repeatCount="indefinite" />
+                </rect>
+              </g>
+              <g transform="translate(240, 36)">
+                <rect width="80" height="6" rx="3" fill="var(--color-line)" opacity="0.5" />
+                <rect width="80" height="6" rx="3" fill="var(--color-aqua)" opacity="0.8">
+                  <animate attributeName="width" values="20;80;20" dur="2.2s" repeatCount="indefinite" />
+                </rect>
+              </g>
+              <g transform="translate(240, 52)">
+                <rect width="60" height="6" rx="3" fill="var(--color-line)" opacity="0.5" />
+                <rect width="60" height="6" rx="3" fill="var(--color-lime)" opacity="0.7">
+                  <animate attributeName="width" values="15;60;15" dur="1.8s" repeatCount="indefinite" />
+                </rect>
+              </g>
+              <g transform="translate(240, 68)">
+                <rect width="90" height="6" rx="3" fill="var(--color-line)" opacity="0.5" />
+                <rect width="90" height="6" rx="3" fill="var(--color-amber)" opacity="0.75">
+                  <animate attributeName="width" values="25;90;25" dur="3.2s" repeatCount="indefinite" />
+                </rect>
+              </g>
+
+              {/* Orbiting dots */}
+              <circle cx="180" cy="50" r="3" fill="var(--color-aqua)" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" values="0 180 50;360 180 50" dur="6s" repeatCount="indefinite" />
+              </circle>
+            </g>
+
+            {/* Flow arrow down */}
+            <g transform="translate(230, 228)">
+              <circle cx="10" cy="10" r="10" fill="var(--color-lime)" opacity="0.15" stroke="var(--color-lime)" strokeWidth="1">
+                <animate attributeName="opacity" values="0.15;0.3;0.15" dur="1.5s" repeatCount="indefinite" />
+              </circle>
+              <text x="10" y="14" textAnchor="middle" fill="var(--color-lime)" fontSize="12" fontFamily="monospace">↓</text>
+            </g>
+
+            {/* SISTEMA 01 - Producto de trabajo */}
+            <g transform="translate(20, 252)">
+              <rect width="200" height="72" rx="14" fill="var(--color-panel-soft)" stroke="var(--color-lime)" strokeWidth="1" opacity="0.8" />
+              <rect width="200" height="72" rx="14" fill="url(#resultGrad)" opacity="0.15" />
+              <text x="16" y="24" fill="var(--color-lime)" fontFamily="monospace" fontSize="9" fontWeight="800" letterSpacing="2">SISTEMA 01</text>
+              <text x="16" y="44" fill="var(--color-ink)" fontSize="14" fontWeight="700" letterSpacing="-0.5">Producto de trabajo</text>
+              <text x="16" y="60" fill="var(--color-muted)" fontSize="9" fontWeight="600">Portal, dashboard o SaaS</text>
+              <circle cx="180" cy="36" r="4" fill="var(--color-lime)" opacity="0.8">
+                <animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.2s" repeatCount="indefinite" />
+              </circle>
+            </g>
+
+            {/* SISTEMA 02 - Agente operativo */}
+            <g transform="translate(260, 252)">
+              <rect width="200" height="72" rx="14" fill="var(--color-panel-soft)" stroke="var(--color-lime)" strokeWidth="1" opacity="0.8" />
+              <rect width="200" height="72" rx="14" fill="url(#resultGrad)" opacity="0.15" />
+              <text x="16" y="24" fill="var(--color-lime)" fontFamily="monospace" fontSize="9" fontWeight="800" letterSpacing="2">SISTEMA 02</text>
+              <text x="16" y="44" fill="var(--color-ink)" fontSize="14" fontWeight="700" letterSpacing="-0.5">Agente operativo</text>
+              <text x="16" y="60" fill="var(--color-muted)" fontSize="9" fontWeight="600">IA conectada a reglas y acciones</text>
+              <circle cx="180" cy="36" r="4" fill="var(--color-amber)" opacity="0.8">
+                <animate attributeName="r" values="3;5;3" dur="2.6s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.6s" repeatCount="indefinite" />
+              </circle>
+            </g>
+
+            {/* Bottom progress bars */}
+            <g transform="translate(20, 340)">
+              <rect width="136" height="40" rx="12" fill="var(--color-shell)" stroke="var(--color-line)" strokeWidth="0.8" opacity="0.7" />
+              <text x="12" y="16" fill="var(--color-dim)" fontFamily="monospace" fontSize="7" letterSpacing="1.5" opacity="0.7">CUELLO DE BOTELLA</text>
+              <rect x="12" y="24" width="112" height="4" rx="2" fill="var(--color-line)" opacity="0.4" />
+              <rect x="12" y="24" height="4" rx="2" fill="var(--color-aqua)" opacity="0.8">
+                <animate attributeName="width" values="40;112;40" dur="4s" repeatCount="indefinite" />
+              </rect>
+            </g>
+            <g transform="translate(172, 340)">
+              <rect width="136" height="40" rx="12" fill="var(--color-shell)" stroke="var(--color-line)" strokeWidth="0.8" opacity="0.7" />
+              <text x="12" y="16" fill="var(--color-dim)" fontFamily="monospace" fontSize="7" letterSpacing="1.5" opacity="0.7">PROTOTIPO VALIDADO</text>
+              <rect x="12" y="24" width="112" height="4" rx="2" fill="var(--color-line)" opacity="0.4" />
+              <rect x="12" y="24" height="4" rx="2" fill="var(--color-lime)" opacity="0.8">
+                <animate attributeName="width" values="60;112;60" dur="3.5s" repeatCount="indefinite" />
+              </rect>
+            </g>
+            <g transform="translate(324, 340)">
+              <rect width="136" height="40" rx="12" fill="var(--color-shell)" stroke="var(--color-line)" strokeWidth="0.8" opacity="0.7" />
+              <text x="12" y="16" fill="var(--color-dim)" fontFamily="monospace" fontSize="7" letterSpacing="1.5" opacity="0.7">SISTEMA EN PRODUCCIÓN</text>
+              <rect x="12" y="24" width="112" height="4" rx="2" fill="var(--color-line)" opacity="0.4" />
+              <rect x="12" y="24" height="4" rx="2" fill="var(--color-aqua)" opacity="0.9">
+                <animate attributeName="width" values="80;112;80" dur="3s" repeatCount="indefinite" />
+              </rect>
+            </g>
+          </svg>
         </div>
       </div>
     </div>
@@ -552,83 +655,244 @@ function PillarIcon({ type }: { type: string }) {
 
 function BlueprintIllustration() {
   return (
-    <div className="relative flex h-full min-h-[400px] items-center justify-center">
+    <div className="relative flex h-full min-h-[400px] items-center justify-center p-2">
       <div className="blueprint-grid absolute inset-0" />
-      <svg
-        aria-hidden="true"
-        className="relative z-10 h-full max-h-[420px] w-full"
-        fill="none"
-        viewBox="0 0 560 460"
-      >
+      <svg viewBox="0 0 480 400" fill="none" className="relative z-10 w-full" aria-label="Mecanismo en producción">
         <defs>
-          <linearGradient id="blueprintGradient" x1="96" x2="456" y1="88" y2="370">
-            <stop stopColor="var(--color-aqua)" />
-            <stop offset="0.55" stopColor="var(--color-amber)" />
-            <stop offset="1" stopColor="var(--color-lime)" />
+          <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="var(--color-aqua)" />
+            <stop offset="100%" stopColor="var(--color-lime)" />
           </linearGradient>
+          <linearGradient id="nodeGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--color-aqua)" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="var(--color-aqua)" stopOpacity="0.02" />
+          </linearGradient>
+          <linearGradient id="coreNodeGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--color-aqua)" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="var(--color-aqua)" stopOpacity="0.05" />
+          </linearGradient>
+          <filter id="nodeGlow">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="railGlow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
-        <path
-          className="signal-path"
-          d="M76 232h82c38 0 44-82 90-82h64c46 0 52 82 90 82h82"
-          stroke="url(#blueprintGradient)"
-          strokeLinecap="round"
-          strokeWidth="2.5"
-        />
-        <path
-          className="signal-path signal-path-delayed"
-          d="M76 294h104c44 0 52 48 96 48h32c44 0 52-48 96-48h80"
-          stroke="var(--color-aqua)"
-          strokeLinecap="round"
-          strokeOpacity="0.46"
-          strokeWidth="1.8"
-        />
-        {[
-          [118, 230, "Input"],
-          [280, 150, "Logic"],
-          [442, 230, "Agent"],
-          [280, 342, "Output"],
-        ].map(([x, y, label]) => (
-          <g className="blueprint-node" key={label}>
-            <rect
-              fill="var(--color-panel)"
-              height="76"
-              rx="20"
-              stroke="var(--color-line)"
-              width="124"
-              x={Number(x) - 62}
-              y={Number(y) - 38}
-            />
-            <circle cx={x} cy={Number(y) - 10} r="9" fill="var(--color-aqua)" opacity="0.85" />
-            <text
-              fill="var(--color-ink)"
-              fontFamily="var(--font-bricolage)"
-              fontSize="18"
-              fontWeight="600"
-              textAnchor="middle"
-              x={x}
-              y={Number(y) + 22}
-            >
-              {label}
-            </text>
+
+        {/* Top bar */}
+        <g transform="translate(10, 8)">
+          <rect width="460" height="44" rx="12" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="0.8" opacity="0.8" />
+          <text x="16" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="8" fontWeight="800" letterSpacing="2">OPERATING MECHANISM</text>
+          <text x="16" y="36" fill="var(--color-ink)" fontSize="13" fontWeight="700" letterSpacing="-0.5">Flujo en producción</text>
+          <circle cx="428" cy="22" r="4" fill="var(--color-rust)" opacity="0.7" />
+          <circle cx="444" cy="22" r="4" fill="var(--color-amber)" opacity="0.7" />
+          <circle cx="460" cy="22" r="4" fill="var(--color-aqua)" opacity="0.7" />
+        </g>
+
+        {/* Metrics row */}
+        <g transform="translate(10, 62)">
+          <rect width="144" height="52" rx="10" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="0.6" opacity="0.7" />
+          <text x="12" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">LEAD TIME</text>
+          <text x="12" y="40" fill="var(--color-ink)" fontSize="20" fontWeight="700" letterSpacing="-1">-42%</text>
+
+          <rect x="158" width="144" height="52" rx="10" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="0.6" opacity="0.7" />
+          <text x="170" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">TAREAS AUTO</text>
+          <text x="170" y="40" fill="var(--color-ink)" fontSize="20" fontWeight="700" letterSpacing="-1">68%</text>
+
+          <rect x="316" width="144" height="52" rx="10" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="0.6" opacity="0.7" />
+          <text x="328" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">SLA</text>
+          <text x="328" y="40" fill="var(--color-ink)" fontSize="20" fontWeight="700" letterSpacing="-1">99.2</text>
+        </g>
+
+        {/* Flow diagram - Entrada */}
+        <g transform="translate(10, 128)">
+          <rect width="130" height="105" rx="14" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="1" opacity="0.85" />
+          <rect width="130" height="105" rx="14" fill="url(#nodeGrad)" opacity="0.5" />
+          <text x="14" y="22" fill="var(--color-aqua)" fontFamily="monospace" fontSize="8" fontWeight="800" letterSpacing="1.5">ENTRADA</text>
+          <text x="14" y="42" fill="var(--color-ink)" fontSize="13" fontWeight="700" letterSpacing="-0.5">Solicitud</text>
+          <text x="14" y="56" fill="var(--color-ink)" fontSize="13" fontWeight="700" letterSpacing="-0.5">cliente</text>
+          <text x="14" y="76" fill="var(--color-muted)" fontSize="9" fontWeight="600">Formulario, correo,</text>
+          <text x="14" y="90" fill="var(--color-muted)" fontSize="9" fontWeight="600">ticket o evento.</text>
+          <circle cx="110" cy="30" r="12" fill="var(--color-aqua)" opacity="0.1">
+            <animate attributeName="r" values="10;14;10" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <path d="M104 30 L110 24 L116 30 L110 36 Z" fill="var(--color-aqua)" opacity="0.6" />
+        </g>
+
+        {/* Rail 1 */}
+        <g transform="translate(148, 175)">
+          <rect width="36" height="3" rx="1.5" fill="var(--color-line)" opacity="0.4" />
+          <rect height="3" rx="1.5" fill="url(#flowGrad)" filter="url(#railGlow)">
+            <animate attributeName="width" values="8;36;8" dur="2.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite" />
+          </rect>
+          <circle r="4" fill="var(--color-aqua)" filter="url(#nodeGlow)">
+            <animate attributeName="cx" values="0;36;0" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+        </g>
+
+        {/* Flow diagram - Motor (Core) */}
+        <g transform="translate(192, 128)">
+          <rect width="130" height="105" rx="14" fill="var(--color-panel)" stroke="var(--color-aqua)" strokeWidth="1.5" opacity="0.9" filter="url(#nodeGlow)">
+            <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite" />
+          </rect>
+          <rect width="130" height="105" rx="14" fill="url(#coreNodeGrad)" opacity="0.6" />
+          <text x="14" y="22" fill="var(--color-aqua)" fontFamily="monospace" fontSize="8" fontWeight="800" letterSpacing="1.5">MOTOR</text>
+          <text x="14" y="42" fill="var(--color-ink)" fontSize="13" fontWeight="700" letterSpacing="-0.5">Reglas + IA</text>
+          <text x="14" y="62" fill="var(--color-muted)" fontSize="9" fontWeight="600">Clasifica, prioriza</text>
+          <text x="14" y="76" fill="var(--color-muted)" fontSize="9" fontWeight="600">y decide el paso.</text>
+          <circle cx="110" cy="30" r="10" fill="none" stroke="var(--color-aqua)" strokeWidth="1.5" opacity="0.6">
+            <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="110" cy="30" r="4" fill="var(--color-aqua)" opacity="0.8" />
+        </g>
+
+        {/* Rail 2 */}
+        <g transform="translate(330, 175)">
+          <rect width="36" height="3" rx="1.5" fill="var(--color-line)" opacity="0.4" />
+          <rect height="3" rx="1.5" fill="url(#flowGrad)" filter="url(#railGlow)">
+            <animate attributeName="width" values="8;36;8" dur="2.5s" repeatCount="indefinite" begin="0.5s" />
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite" begin="0.5s" />
+          </rect>
+          <circle r="4" fill="var(--color-lime)" filter="url(#nodeGlow)">
+            <animate attributeName="cx" values="0;36;0" dur="2.5s" repeatCount="indefinite" begin="0.5s" />
+          </circle>
+        </g>
+
+        {/* Flow diagram - Salida */}
+        <g transform="translate(374, 128)">
+          <rect width="100" height="105" rx="14" fill="var(--color-panel-soft)" stroke="var(--color-lime)" strokeWidth="1" opacity="0.85" />
+          <rect width="100" height="105" rx="14" fill="url(#nodeGrad)" opacity="0.3" />
+          <text x="14" y="22" fill="var(--color-lime)" fontFamily="monospace" fontSize="8" fontWeight="800" letterSpacing="1.5">SALIDA</text>
+          <text x="14" y="42" fill="var(--color-ink)" fontSize="13" fontWeight="700" letterSpacing="-0.5">Acción</text>
+          <text x="14" y="56" fill="var(--color-ink)" fontSize="13" fontWeight="700" letterSpacing="-0.5">ejecutada</text>
+          <text x="14" y="76" fill="var(--color-muted)" fontSize="9" fontWeight="600">Respuesta, update,</text>
+          <text x="14" y="90" fill="var(--color-muted)" fontSize="9" fontWeight="600">alerta o tarea.</text>
+          <circle cx="80" cy="30" r="12" fill="var(--color-lime)" opacity="0.1">
+            <animate attributeName="r" values="10;14;10" dur="2s" repeatCount="indefinite" begin="0.3s" />
+          </circle>
+          <path d="M76 30 L80 26 L84 30 L80 34 Z" fill="var(--color-lime)" opacity="0.6" />
+        </g>
+
+        {/* Log panel */}
+        <g transform="translate(10, 248)">
+          <rect width="460" height="130" rx="14" fill="var(--color-shell)" stroke="var(--color-line)" strokeWidth="0.8" opacity="0.8" />
+
+          <line x1="0" y1="28" x2="460" y2="28" stroke="var(--color-line)" strokeWidth="0.6" opacity="0.5" />
+          <circle cx="16" cy="14" r="3" fill="var(--color-dim)" opacity="0.5" />
+          <text x="28" y="18" fill="var(--color-dim)" fontFamily="monospace" fontSize="7" letterSpacing="1">EVENT LOG</text>
+
+          <g transform="translate(14, 42)">
+            <rect width="432" height="24" rx="6" fill="var(--color-panel-soft)" opacity="0.5" />
+            <text x="10" y="16" fill="var(--color-aqua)" fontFamily="monospace" fontSize="9" fontWeight="700">09:42</text>
+            <text x="56" y="16" fill="var(--color-muted)" fontSize="9" fontWeight="600">Agente validó prioridad alta y creó seguimiento.</text>
+            <circle cx="420" cy="12" r="3" fill="var(--color-lime)" opacity="0.6">
+              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.5s" repeatCount="indefinite" />
+            </circle>
           </g>
-        ))}
-        <circle
-          className="blueprint-core"
-          cx="280"
-          cy="232"
-          r="58"
-          fill="var(--color-shell)"
-          stroke="url(#blueprintGradient)"
-          strokeWidth="2"
-        />
-        <path
-          d="M254 233h52m-18-19 18 19-18 19"
-          stroke="var(--color-ink)"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2.4"
-        />
+
+          <g transform="translate(14, 72)">
+            <rect width="432" height="24" rx="6" fill="var(--color-panel-soft)" opacity="0.5" />
+            <text x="10" y="16" fill="var(--color-aqua)" fontFamily="monospace" fontSize="9" fontWeight="700">09:43</text>
+            <text x="56" y="16" fill="var(--color-muted)" fontSize="9" fontWeight="600">Portal actualizó estado visible para el cliente.</text>
+            <circle cx="420" cy="12" r="3" fill="var(--color-amber)" opacity="0.6">
+              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.8s" repeatCount="indefinite" />
+            </circle>
+          </g>
+
+          <g transform="translate(14, 102)">
+            <rect width="432" height="24" rx="6" fill="var(--color-panel-soft)" opacity="0.5" />
+            <text x="10" y="16" fill="var(--color-aqua)" fontFamily="monospace" fontSize="9" fontWeight="700">09:44</text>
+            <text x="56" y="16" fill="var(--color-muted)" fontSize="9" fontWeight="600">Métrica registrada para aprendizaje del flujo.</text>
+            <circle cx="420" cy="12" r="3" fill="var(--color-aqua)" opacity="0.6">
+              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.1s" repeatCount="indefinite" />
+            </circle>
+          </g>
+        </g>
       </svg>
     </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer-shell relative z-10 px-5 pb-8 pt-4 sm:px-6">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-line/80 bg-panel/70 shadow-2xl shadow-black/20 backdrop-blur-xl">
+        <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[1.2fr_0.7fr_0.7fr_1fr] lg:p-12">
+          <div>
+            <div className="flex items-center gap-3">
+              <LogoMark />
+              <div>
+                <p className="text-lg font-semibold tracking-[-0.03em] text-ink">
+                  Tenzor Labs
+                </p>
+                <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.24em] text-dim">
+                  software · IA · automatización
+                </p>
+              </div>
+            </div>
+            <p className="mt-6 max-w-sm text-base leading-7 text-muted">
+              Diseñamos sistemas digitales para empresas que necesitan operar
+              más rápido, con menos fricción y una experiencia que se sienta
+              inevitablemente moderna.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="footer-title">Navegación</h3>
+            <div className="mt-4 grid gap-3">
+              {footerNav.map((item) => (
+                <a className="footer-link" href={item.href} key={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="footer-title">Especialidades</h3>
+            <div className="mt-4 grid gap-3">
+              {footerServices.map((service) => (
+                <span className="footer-link" key={service}>
+                  {service}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="footer-contact">
+            <p className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
+              Discovery directo
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-ink">
+              Convirtamos tu operación en producto.
+            </h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              Santiago, Chile. Trabajamos con equipos B2B que necesitan mover
+              una métrica concreta.
+            </p>
+            <div className="mt-6">
+              <CTAButton>hola@tenzorlabs.cl</CTAButton>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-line/70 px-8 py-5 text-sm text-dim sm:flex-row sm:items-center sm:justify-between lg:px-12">
+          <p>Tenzor Labs © 2026 | Santiago, Chile.</p>
+          <p className="font-mono uppercase tracking-[0.22em]">
+            Build the operating edge
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }
