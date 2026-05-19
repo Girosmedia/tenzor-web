@@ -148,12 +148,12 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <CTAButton large>Diseñar mi sistema</CTAButton>
+              <CTAButton large>Agendar Discovery Call</CTAButton>
               <a
                 className="group inline-flex items-center justify-center rounded-full border border-line/80 bg-panel/50 px-7 py-4 text-base font-semibold text-ink transition duration-300 hover:border-aqua/70 hover:text-aqua"
                 href="#arquitectura"
               >
-                Ver arquitectura
+                Ver Casos de Uso
                 <span
                   aria-hidden="true"
                   className="ml-2 transition-transform duration-300 group-hover:translate-y-0.5"
@@ -346,7 +346,7 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <CTAButton large>Agendar diagnóstico</CTAButton>
               <CTAButton large variant="secondary">
-                Escribir a Tenzor Labs
+                Hablar con un Arquitecto
               </CTAButton>
             </div>
           </div>
