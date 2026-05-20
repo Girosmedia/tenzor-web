@@ -1,16 +1,21 @@
 # syntax=docker/dockerfile:1
 
+ARG PNPM_VERSION=10.30.3
+
 # ─── Stage 1: deps ────────────────────────────────────────────────────────────
 FROM node:22-alpine AS deps
-RUN corepack enable && corepack prepare pnpm@latest --activate
+ARG PNPM_VERSION
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 WORKDIR /app
+ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
 
 COPY package.json pnpm-lock.yaml .npmrc ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --minimum-release-age=0
 
 # ─── Stage 2: builder ─────────────────────────────────────────────────────────
 FROM node:22-alpine AS builder
-RUN corepack enable && corepack prepare pnpm@latest --activate
+ARG PNPM_VERSION
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
