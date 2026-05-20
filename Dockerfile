@@ -10,7 +10,7 @@ WORKDIR /app
 ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
 
 COPY package.json pnpm-lock.yaml .npmrc ./
-RUN pnpm install --frozen-lockfile --minimum-release-age=0
+RUN pnpm install --frozen-lockfile
 
 # ─── Stage 2: builder ─────────────────────────────────────────────────────────
 FROM node:22-alpine AS builder
