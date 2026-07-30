@@ -3,8 +3,9 @@ import LogoMark from "./logo-mark";
 import { CONTACT_EMAILS } from "@/lib/site-config";
 
 const footerNav = [
-  { label: "Qué hago", href: "#que-hago" },
-  { label: "Cómo trabajo", href: "#como-trabajo" },
+  { label: "Qué hago", href: "/#que-hago" },
+  { label: "Cómo trabajo", href: "/#como-trabajo" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const footerServices = [
