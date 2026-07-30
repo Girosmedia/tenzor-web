@@ -42,19 +42,19 @@ export default function BlueprintIllustration() {
           <circle cx="460" cy="22" r="4" fill="var(--color-aqua)" opacity="0.7" />
         </g>
 
-        {/* Metrics row */}
+        {/* Status row (cualitativo, sin cifras) */}
         <g transform="translate(10, 62)">
           <rect width="144" height="52" rx="10" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="0.6" opacity="0.7" />
-          <text x="12" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">LEAD TIME</text>
-          <text x="12" y="40" fill="var(--color-ink)" fontSize="20" fontWeight="700" letterSpacing="-1">-42%</text>
+          <text x="12" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">PROCESO</text>
+          <text x="12" y="38" fill="var(--color-ink)" fontSize="12" fontWeight="700" letterSpacing="-0.3">Automatizado</text>
 
           <rect x="158" width="144" height="52" rx="10" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="0.6" opacity="0.7" />
-          <text x="170" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">TAREAS AUTO</text>
-          <text x="170" y="40" fill="var(--color-ink)" fontSize="20" fontWeight="700" letterSpacing="-1">68%</text>
+          <text x="170" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">TAREAS</text>
+          <text x="170" y="38" fill="var(--color-ink)" fontSize="12" fontWeight="700" letterSpacing="-0.3">En ejecución</text>
 
           <rect x="316" width="144" height="52" rx="10" fill="var(--color-panel-soft)" stroke="var(--color-line)" strokeWidth="0.6" opacity="0.7" />
-          <text x="328" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">SLA</text>
-          <text x="328" y="40" fill="var(--color-ink)" fontSize="20" fontWeight="700" letterSpacing="-1">99.2</text>
+          <text x="328" y="20" fill="var(--color-aqua)" fontFamily="monospace" fontSize="7" fontWeight="800" letterSpacing="1.5">ESTADO</text>
+          <text x="328" y="38" fill="var(--color-ink)" fontSize="12" fontWeight="700" letterSpacing="-0.3">Monitoreado</text>
         </g>
 
         {/* Flow diagram - Entrada */}
