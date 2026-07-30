@@ -102,6 +102,14 @@ export default function SiteFooter() {
 
         <div className="flex flex-col gap-3 border-t border-line/70 px-8 py-5 text-sm text-dim sm:flex-row sm:items-center sm:justify-between lg:px-12">
           <p>Tenzor Labs © 2026 | Santiago, Chile.</p>
+          <div className="flex gap-4">
+            <a className="footer-link" href="/privacidad">
+              Privacidad
+            </a>
+            <a className="footer-link" href="/terminos">
+              Términos
+            </a>
+          </div>
         </div>
       </div>
     </footer>
