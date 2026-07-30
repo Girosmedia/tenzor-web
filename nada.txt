@@ -1,7 +1,0 @@
-ehice esos dos bloques con más intención de copy y menos presión visual.
-
-En el hero, “Señales que se convierten en sistemas” ahora cuenta una historia más clara: Fricción operativa + Contexto disperso → Tenzor Core → Producto de trabajo + Agente operativo. También cambié la composición a un flujo vertical con más aire, para evitar el problema de columnas comprimidas.
-
-En “Entregamos mecanismos”, la izquierda ya no duplica la derecha: ahora tiene copy elaborado por mecanismo (Captura operativa, Decisión asistida, Ejecución automática, Aprendizaje medible). La derecha pasó a ser un mockup distinto de “Flujo en producción” con métricas, entrada/motor/salida y logs operativos.
-
-Validado con npm run lint y npm run build, ambos OK.
