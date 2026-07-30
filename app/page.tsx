@@ -8,29 +8,8 @@ import ProblemSection from "./_components/home/problem-section";
 import ServicesSection from "./_components/home/services-section";
 import ProofSection from "./_components/home/proof-section";
 import FounderSection from "./_components/home/founder-section";
-
-const layers = [
-  {
-    label: "01",
-    title: "Discovery quirúrgico",
-    text: "Mapeamos fricción, riesgo y valor antes de proponer tecnología.",
-  },
-  {
-    label: "02",
-    title: "Arquitectura de solución",
-    text: "Definimos datos, interfaces, agentes y contratos de integración.",
-  },
-  {
-    label: "03",
-    title: "Construcción iterativa",
-    text: "Entregas cortas, demos reales y decisiones visibles cada semana.",
-  },
-  {
-    label: "04",
-    title: "Operación y mejora",
-    text: "Monitoreo, documentación y evolución posterior al lanzamiento.",
-  },
-];
+import ProcessSection from "./_components/home/process-section";
+import DiagnosticCtaSection from "./_components/home/diagnostic-cta-section";
 
 const capabilities = [
   "Agentes multi-step",
@@ -145,36 +124,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 px-5 py-20 sm:px-6 sm:py-28" id="metodo">
-        <div className="mx-auto max-w-7xl">
-          <div className="reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <div className="max-w-3xl">
-              <SectionEyebrow>Método Tenzor</SectionEyebrow>
-              <h2 className="mt-5 text-balance text-4xl font-semibold leading-tight tracking-[-0.055em] text-ink sm:text-6xl">
-                Una línea de montaje para ideas ambiciosas.
-              </h2>
-            </div>
-            <p className="max-w-xl text-lg leading-8 text-muted">
-              Reducimos incertidumbre con procesos visibles, prototipos
-              tempranos y decisiones de producto respaldadas por datos.
-            </p>
-          </div>
+      <ProcessSection />
 
-          <ol className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {layers.map((step, index) => (
-              <li
-                className="process-card reveal"
-                key={step.label}
-                style={{ animationDelay: `${index * 120}ms` }}
-              >
-                <span className="process-index">{step.label}</span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <DiagnosticCtaSection />
 
       <section className="relative z-10 px-5 py-20 sm:px-6 sm:py-28">
         <div className="cta-stage reveal mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-aqua/20 bg-panel/80 p-8 text-center shadow-2xl shadow-aqua/5 backdrop-blur-xl sm:p-14 lg:p-20">
