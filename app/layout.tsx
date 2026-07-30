@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   Bricolage_Grotesque,
   Instrument_Serif,
@@ -58,6 +59,9 @@ export const metadata: Metadata = {
   },
 };
 
+const umamiSrc = process.env.NEXT_PUBLIC_UMAMI_SRC;
+const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,7 +72,16 @@ export default function RootLayout({
       lang="es"
       className={`${bricolage.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="bg-shell text-ink antialiased">{children}</body>
+      <body className="bg-shell text-ink antialiased">
+        {children}
+        {umamiSrc && umamiWebsiteId && (
+          <Script
+            src={umamiSrc}
+            data-website-id={umamiWebsiteId}
+            strategy="afterInteractive"
+          />
+        )}
+      </body>
     </html>
   );
 }
