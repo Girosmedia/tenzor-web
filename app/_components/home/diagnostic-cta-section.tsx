@@ -1,5 +1,6 @@
 import CTAButton from "../cta-button";
 import SectionEyebrow from "../section-eyebrow";
+import ContactForm from "./contact-form";
 
 // TODO(diagnóstico-real): reemplazar este CTA por la herramienta de
 // diagnóstico embebida cuando esté lista, sin tocar el resto del home.
@@ -19,6 +20,16 @@ export default function DiagnosticCtaSection() {
           </p>
           <div className="mt-10">
             <CTAButton large>Agenda tu diagnóstico gratuito</CTAButton>
+          </div>
+
+          <div className="mt-10 flex w-full max-w-md items-center gap-4 text-xs font-semibold uppercase tracking-[0.28em] text-dim">
+            <span className="h-px flex-1 bg-line/80" />
+            o escríbeme directamente
+            <span className="h-px flex-1 bg-line/80" />
+          </div>
+
+          <div className="mt-8 w-full max-w-md">
+            <ContactForm />
           </div>
         </div>
       </div>
