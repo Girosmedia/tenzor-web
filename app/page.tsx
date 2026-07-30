@@ -2,33 +2,10 @@ import SiteHeader from "./_components/site-header";
 import SiteFooter from "./_components/site-footer";
 import SectionEyebrow from "./_components/section-eyebrow";
 import BlueprintIllustration from "./_components/illustrations/blueprint-illustration";
-import PillarIcon from "./_components/illustrations/pillar-icon";
 import CTAButton from "./_components/cta-button";
 import HeroSection from "./_components/home/hero-section";
-
-const pillars = [
-  {
-    icon: "agents",
-    eyebrow: "Autonomía aplicada",
-    title: "Agentes de IA con criterio operacional",
-    text: "Diseñamos agentes especializados que razonan sobre datos, ejecutan tareas y se integran con CRM, ERP, soporte o backoffice sin romper tu ecosistema actual.",
-    highlight: "Menos trabajo manual, más decisiones trazables.",
-  },
-  {
-    icon: "product",
-    eyebrow: "Producto B2B",
-    title: "Plataformas web listas para escalar",
-    text: "Construimos portales, dashboards y SaaS con arquitectura limpia, interfaces precisas y performance pensada para flujos críticos de negocio.",
-    highlight: "Experiencia premium, base técnica sobria.",
-  },
-  {
-    icon: "systems",
-    eyebrow: "Arquitectura",
-    title: "Modernización de sistemas legacy",
-    text: "Convertimos procesos dispersos en sistemas conectados con APIs, automatizaciones y capas de observabilidad que permiten operar con control.",
-    highlight: "Infraestructura adaptable, no parches eternos.",
-  },
-];
+import ProblemSection from "./_components/home/problem-section";
+import ServicesSection from "./_components/home/services-section";
 
 const layers = [
   {
@@ -96,53 +73,9 @@ export default function Home() {
 
       <HeroSection />
 
-      <section
-        className="relative z-10 px-5 py-20 sm:px-6 sm:py-28"
-        id="arquitectura"
-      >
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="reveal lg:sticky lg:top-28 lg:h-fit">
-            <SectionEyebrow>Arquitectura de soluciones</SectionEyebrow>
-            <h2 className="mt-5 text-balance text-4xl font-semibold leading-tight tracking-[-0.055em] text-ink sm:text-6xl">
-              Modernidad visible, ingeniería invisible.
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-muted">
-              Una landing de agencia de software debe demostrar lo mismo que
-              promete: precisión, velocidad, criterio estético y dominio
-              técnico. Por eso cada bloque muestra una capa del sistema que
-              podemos construir.
-            </p>
-          </div>
+      <ProblemSection />
 
-          <div className="grid gap-5">
-            {pillars.map((pillar, index) => (
-              <article
-                className="reveal signal-card group"
-                key={pillar.title}
-                style={{ animationDelay: `${index * 110}ms` }}
-              >
-                <div className="flex flex-col gap-6 sm:flex-row">
-                  <PillarIcon type={pillar.icon} />
-                  <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
-                      {pillar.eyebrow}
-                    </p>
-                    <h3 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-ink">
-                      {pillar.title}
-                    </h3>
-                    <p className="mt-4 text-base leading-7 text-muted">
-                      {pillar.text}
-                    </p>
-                    <p className="mt-5 inline-flex rounded-full border border-amber/30 bg-amber/10 px-4 py-2 text-sm font-semibold text-amber">
-                      {pillar.highlight}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesSection />
 
       <section className="relative z-10 px-5 py-20 sm:px-6 sm:py-28" id="sistema">
         <div className="mx-auto max-w-7xl">
