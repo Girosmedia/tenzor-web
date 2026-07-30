@@ -6,6 +6,8 @@ import CTAButton from "./_components/cta-button";
 import HeroSection from "./_components/home/hero-section";
 import ProblemSection from "./_components/home/problem-section";
 import ServicesSection from "./_components/home/services-section";
+import ProofSection from "./_components/home/proof-section";
+import FounderSection from "./_components/home/founder-section";
 
 const layers = [
   {
@@ -76,6 +78,10 @@ export default function Home() {
       <ProblemSection />
 
       <ServicesSection />
+
+      <ProofSection />
+
+      <FounderSection />
 
       <section className="relative z-10 px-5 py-20 sm:px-6 sm:py-28" id="sistema">
         <div className="mx-auto max-w-7xl">
