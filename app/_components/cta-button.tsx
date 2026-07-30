@@ -1,20 +1,20 @@
 import type { ReactNode } from "react";
+import { CALCOM_URL } from "@/lib/site-config";
 
 interface CTAButtonProps {
   children?: ReactNode;
   className?: string;
   large?: boolean;
   variant?: "primary" | "secondary";
+  href?: string;
 }
 
-const discoveryMailto =
-  "mailto:hola@tenzorlabs.cl?subject=Discovery%20Call%20-%20Tenzor%20Labs&body=Hola%20equipo%20de%20Tenzor%20Labs%2C%0A%0AMe%20gustar%C3%ADa%20agendar%20un%20Discovery%20Call%20para%20conversar%20sobre%20mi%20proyecto.%0A%0ASaludos.";
-
 export default function CTAButton({
-  children = "Agendar Discovery Call",
+  children = "Agenda un diagnóstico gratuito",
   className = "",
   large = false,
   variant = "primary",
+  href = CALCOM_URL,
 }: CTAButtonProps) {
   const sizeClass = large
     ? "px-7 py-4 text-base sm:px-10 sm:text-lg"
@@ -28,7 +28,7 @@ export default function CTAButton({
         variant === "primary" ? "cta-primary" : "cta-secondary",
         className,
       ].join(" ")}
-      href={discoveryMailto}
+      href={href}
     >
       {children}
       <svg

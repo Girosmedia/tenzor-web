@@ -1,28 +1,10 @@
-import CTAButton from "./_components/cta-button";
 import SiteHeader from "./_components/site-header";
 import SiteFooter from "./_components/site-footer";
 import SectionEyebrow from "./_components/section-eyebrow";
-import CommandDeckIllustration from "./_components/illustrations/command-deck-illustration";
 import BlueprintIllustration from "./_components/illustrations/blueprint-illustration";
 import PillarIcon from "./_components/illustrations/pillar-icon";
-
-const proofPoints = [
-  {
-    value: "3x",
-    label: "líneas de impacto",
-    text: "Producto, IA y automatización operando como una sola unidad.",
-  },
-  {
-    value: "24/7",
-    label: "operación aumentada",
-    text: "Agentes y sistemas que siguen ejecutando cuando el equipo duerme.",
-  },
-  {
-    value: "0",
-    label: "código decorativo",
-    text: "Cada interfaz, endpoint y workflow existe para mover una métrica.",
-  },
-];
+import CTAButton from "./_components/cta-button";
+import HeroSection from "./_components/home/hero-section";
 
 const pillars = [
   {
@@ -112,70 +94,7 @@ export default function Home() {
 
       <SiteHeader />
 
-      <section className="relative z-10 px-5 pb-20 pt-16 sm:px-6 sm:pb-28 lg:pb-36 lg:pt-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="reveal max-w-4xl">
-            <div className="inline-flex items-center gap-3 rounded-full border border-line/80 bg-panel/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-muted shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl">
-              <span className="size-2 rounded-full bg-aqua shadow-[0_0_22px_var(--color-aqua)]" />
-              Laboratorio de producto autónomo
-            </div>
-
-            <h1 className="mt-8 max-w-5xl text-balance text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-ink sm:text-7xl lg:text-[6.8rem]">
-              Software que se siente como{" "}
-              <span className="font-serif font-normal italic tracking-[-0.045em] text-aqua">
-                ventaja injusta
-              </span>
-              .
-            </h1>
-
-            <p className="mt-8 max-w-2xl text-pretty text-lg leading-8 text-muted sm:text-xl">
-              Tenzor Labs transforma operaciones lentas en productos digitales,
-              agentes de IA y automatizaciones que reducen fricción, elevan la
-              experiencia y preparan a tu empresa para escalar sin improvisar.
-            </p>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <CTAButton large>Agendar Discovery Call</CTAButton>
-              <a
-                className="group inline-flex items-center justify-center rounded-full border border-line/80 bg-panel/50 px-7 py-4 text-base font-semibold text-ink transition duration-300 hover:border-aqua/70 hover:text-aqua"
-                href="#arquitectura"
-              >
-                Ver Casos de Uso
-                <span
-                  aria-hidden="true"
-                  className="ml-2 transition-transform duration-300 group-hover:translate-y-0.5"
-                >
-                  ↓
-                </span>
-              </a>
-            </div>
-          </div>
-
-          <div
-            className="reveal relative"
-            style={{ animationDelay: "140ms" }}
-          >
-            <CommandDeckIllustration />
-          </div>
-        </div>
-
-        <div
-          className="reveal mx-auto mt-16 grid max-w-7xl gap-4 sm:grid-cols-3"
-          style={{ animationDelay: "260ms" }}
-        >
-          {proofPoints.map((point) => (
-            <article className="metric-tile" key={point.label}>
-              <span className="font-mono text-sm uppercase tracking-[0.28em] text-dim">
-                {point.label}
-              </span>
-              <strong className="mt-3 block text-4xl font-semibold tracking-[-0.06em] text-ink">
-                {point.value}
-              </strong>
-              <p className="mt-3 text-sm leading-6 text-muted">{point.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <HeroSection />
 
       <section
         className="relative z-10 px-5 py-20 sm:px-6 sm:py-28"

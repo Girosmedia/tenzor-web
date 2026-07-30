@@ -1,5 +1,6 @@
 import CTAButton from "./cta-button";
 import LogoMark from "./logo-mark";
+import { CONTACT_EMAILS } from "@/lib/site-config";
 
 const footerNav = [
   { label: "Arquitectura", href: "#arquitectura" },
@@ -72,7 +73,9 @@ export default function SiteFooter() {
               una métrica concreta.
             </p>
             <div className="mt-6">
-              <CTAButton>hola@tenzorlabs.cl</CTAButton>
+              <CTAButton href={`mailto:${CONTACT_EMAILS.general}`}>
+                {CONTACT_EMAILS.general}
+              </CTAButton>
             </div>
           </div>
         </div>
