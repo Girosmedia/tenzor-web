@@ -4,11 +4,15 @@ import SiteFooter from "../_components/site-footer";
 import SectionEyebrow from "../_components/section-eyebrow";
 import PostCard from "../_components/blog/post-card";
 import { getAllPosts } from "@/lib/blog";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Blog | Tenzor Labs",
   description:
     "Notas sobre sitios que convierten, automatización y cumplimiento de la Ley 21.719 para PyMEs chilenas.",
+  alternates: {
+    canonical: `${SITE_URL}/blog`,
+  },
 };
 
 export default function BlogIndex() {
