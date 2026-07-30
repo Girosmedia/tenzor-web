@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import SiteHeader from "../../_components/site-header";
 import SiteFooter from "../../_components/site-footer";
 import PostHeader from "../../_components/blog/post-header";
+import NewsletterSubscribe from "../../_components/blog/newsletter-subscribe";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { compilePostContent } from "@/lib/mdx";
 import { buildArticleJsonLd, postImage, postUrl } from "@/lib/seo";
@@ -82,6 +83,9 @@ export default async function BlogPost({
       <article className="relative z-10 px-5 py-20 sm:px-6 sm:py-28">
         <PostHeader frontmatter={post.frontmatter} />
         <div className="reveal mx-auto mt-4 max-w-3xl">{content}</div>
+        <div className="reveal mx-auto mt-14 max-w-3xl">
+          <NewsletterSubscribe />
+        </div>
       </article>
 
       <SiteFooter />
