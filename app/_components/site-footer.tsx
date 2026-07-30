@@ -3,16 +3,21 @@ import LogoMark from "./logo-mark";
 import { CONTACT_EMAILS } from "@/lib/site-config";
 
 const footerNav = [
-  { label: "Arquitectura", href: "#arquitectura" },
-  { label: "Sistema", href: "#sistema" },
-  { label: "Método", href: "#metodo" },
+  { label: "Qué hago", href: "#que-hago" },
+  { label: "Cómo trabajo", href: "#como-trabajo" },
 ];
 
 const footerServices = [
-  "Producto B2B",
-  "Agentes de IA",
-  "Automatización",
-  "Modernización legacy",
+  "Sitios que convierten",
+  "Automatización de procesos",
+  "Software a medida",
+  "Cumplimiento Ley 21.719",
+];
+
+const footerProducts = [
+  // FALTA: URLs reales de las landings de Tendo y Tendo Personas.
+  { label: "Tendo", href: "#" },
+  { label: "Tendo Personas", href: "#" },
 ];
 
 export default function SiteFooter() {
@@ -28,14 +33,13 @@ export default function SiteFooter() {
                   Tenzor Labs
                 </p>
                 <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.24em] text-dim">
-                  software · IA · automatización
+                  software para PyMEs chilenas
                 </p>
               </div>
             </div>
             <p className="mt-6 max-w-sm text-base leading-7 text-muted">
-              Diseñamos sistemas digitales para empresas que necesitan operar
-              más rápido, con menos fricción y una experiencia que se sienta
-              inevitablemente moderna.
+              Diseño y construyo sitios, software a medida y automatizaciones
+              para negocios chilenos que necesitan más clientes.
             </p>
           </div>
 
@@ -51,7 +55,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="footer-title">Especialidades</h3>
+            <h3 className="footer-title">Servicios</h3>
             <div className="mt-4 grid gap-3">
               {footerServices.map((service) => (
                 <span className="footer-link" key={service}>
@@ -59,18 +63,33 @@ export default function SiteFooter() {
                 </span>
               ))}
             </div>
+            <h3 className="footer-title mt-6">Productos</h3>
+            <div className="mt-4 grid gap-3">
+              {footerProducts.map((product) => (
+                <a
+                  className="footer-link"
+                  href={product.href}
+                  key={product.label}
+                >
+                  {product.label}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="footer-contact">
             <p className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
-              Discovery directo
+              Contacto directo
             </p>
             <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-ink">
-              Convirtamos tu operación en producto.
+              Construyamos el sistema que te trae clientes.
             </h3>
             <p className="mt-3 text-sm leading-6 text-muted">
-              Santiago, Chile. Trabajamos con equipos B2B que necesitan mover
-              una métrica concreta.
+              Santiago, Chile. Trabajo con PyMEs y empresas chilenas que
+              quieren crecer con software real.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              {CONTACT_EMAILS.general} · {CONTACT_EMAILS.founder}
             </p>
             <div className="mt-6">
               <CTAButton href={`mailto:${CONTACT_EMAILS.general}`}>
@@ -82,9 +101,6 @@ export default function SiteFooter() {
 
         <div className="flex flex-col gap-3 border-t border-line/70 px-8 py-5 text-sm text-dim sm:flex-row sm:items-center sm:justify-between lg:px-12">
           <p>Tenzor Labs © 2026 | Santiago, Chile.</p>
-          <p className="font-mono uppercase tracking-[0.22em]">
-            Build the operating edge
-          </p>
         </div>
       </div>
     </footer>

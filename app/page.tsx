@@ -2,7 +2,6 @@ import SiteHeader from "./_components/site-header";
 import SiteFooter from "./_components/site-footer";
 import SectionEyebrow from "./_components/section-eyebrow";
 import BlueprintIllustration from "./_components/illustrations/blueprint-illustration";
-import CTAButton from "./_components/cta-button";
 import HeroSection from "./_components/home/hero-section";
 import ProblemSection from "./_components/home/problem-section";
 import ServicesSection from "./_components/home/services-section";
@@ -10,6 +9,7 @@ import ProofSection from "./_components/home/proof-section";
 import FounderSection from "./_components/home/founder-section";
 import ProcessSection from "./_components/home/process-section";
 import DiagnosticCtaSection from "./_components/home/diagnostic-cta-section";
+import FinalCtaSection from "./_components/home/final-cta-section";
 
 const capabilities = [
   "Agentes multi-step",
@@ -128,27 +128,7 @@ export default function Home() {
 
       <DiagnosticCtaSection />
 
-      <section className="relative z-10 px-5 py-20 sm:px-6 sm:py-28">
-        <div className="cta-stage reveal mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-aqua/20 bg-panel/80 p-8 text-center shadow-2xl shadow-aqua/5 backdrop-blur-xl sm:p-14 lg:p-20">
-          <div className="mx-auto flex max-w-4xl flex-col items-center">
-            <SectionEyebrow>El siguiente movimiento</SectionEyebrow>
-            <h2 className="mt-5 text-balance text-4xl font-semibold leading-tight tracking-[-0.055em] text-ink sm:text-6xl">
-              Si tu operación ya tiene tensión, construyamos el sistema que la
-              libere.
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-              Cuéntanos tu cuello de botella y diseñamos una ruta técnica clara:
-              que automatizar, que construir y que medir primero.
-            </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <CTAButton large>Agendar diagnóstico</CTAButton>
-              <CTAButton large variant="secondary">
-                Hablar con un Arquitecto
-              </CTAButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FinalCtaSection />
 
       <SiteFooter />
     </main>
