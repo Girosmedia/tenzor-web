@@ -11,7 +11,6 @@ const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
   display: "swap",
-  axes: ["opsz", "wdth"],
 });
 
 const instrumentSerif = Instrument_Serif({
