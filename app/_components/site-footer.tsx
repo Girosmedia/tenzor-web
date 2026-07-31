@@ -6,6 +6,7 @@ const footerNav = [
   { label: "Qué hago", href: "/#que-hago" },
   { label: "Cómo trabajo", href: "/#como-trabajo" },
   { label: "Blog", href: "/blog" },
+  { label: "Capacidades técnicas", href: "/capacidades" },
 ];
 
 const footerServices = [
