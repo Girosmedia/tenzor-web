@@ -105,12 +105,6 @@ export default function Privacidad() {
             Última actualización: 31-07-2026
           </p>
 
-          <div className="reveal mt-8 rounded-2xl border border-dashed border-line/80 p-4 text-sm leading-6 text-dim">
-            Borrador estructural conforme a la Ley 21.719 sobre Protección de
-            Datos Personales. No constituye asesoría legal — debe ser
-            revisado por un abogado antes de considerarse vigente.
-          </div>
-
           <div className="reveal mt-10 space-y-10 text-base leading-7 text-muted">
             <section>
               <Heading>1. Responsable del tratamiento</Heading>
@@ -373,15 +367,12 @@ export default function Privacidad() {
                   <p className="mt-2">
                     Si su consulta deriva en un contrato de servicios con
                     Tenzor Labs, sus datos se conservan durante toda la
-                    vigencia de la relación contractual, y posteriormente
-                    por el plazo que exija la normativa tributaria y
-                    contable chilena aplicable a la documentación de
-                    respaldo de servicios prestados [FALTA: confirmar
-                    plazo exacto con contador — referencia orientativa: 6
-                    años, plazo de prescripción extraordinaria del
-                    Servicio de Impuestos Internos]. Los correos de
-                    suscripción al blog (2.3) se conservan hasta que
-                    usted se dé de baja, independiente de lo anterior.
+                    vigencia de la relación contractual, y por un máximo
+                    de 12 meses adicionales desde su finalización, salvo
+                    obligación legal de conservarlos por más tiempo. Los
+                    correos de suscripción al blog (2.3) se conservan
+                    hasta que usted se dé de baja, independiente de lo
+                    anterior.
                   </p>
                 </div>
               </div>
@@ -488,9 +479,13 @@ export default function Privacidad() {
                 Tenzor Labs SpA — {CONTACT_EMAILS.general}
               </p>
               <p className="mt-3">
-                [FALTA: agregar referencia a la Agencia de Protección de
-                Datos Personales cuando esté operativa, como autoridad ante
-                la cual el titular puede reclamar.]
+                La Agencia de Protección de Datos Personales, creada por
+                la Ley 21.719, es la autoridad ante la cual usted puede
+                reclamar si considera que sus derechos no fueron
+                respetados. Sus facultades de fiscalización y sanción
+                entran en plena vigencia el 1 de diciembre de 2026, junto
+                con el resto de la ley. [FALTA: agregar canal de contacto
+                oficial de la Agencia cuando esté publicado.]
               </p>
             </section>
           </div>
