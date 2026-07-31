@@ -68,12 +68,9 @@ export async function POST(request: Request) {
   const resend = new Resend(apiKey);
   const timestamp = new Date().toISOString();
 
-  try {
-    await resend.emails.send({
-      // FALTA: reemplazar por un remitente en un dominio verificado en
-      // Resend (ej. hola@tenzorlabs.cl) — onboarding@resend.dev es el
-      // remitente de pruebas por defecto sin verificación de dominio.
-      from: "Formulario Tenzor Labs <onboarding@resend.dev>",
+  const { error: sendError } = await resend.emails
+    .send({
+      from: `Tenzor Labs <${CONTACT_EMAILS.general}>`,
       to: CONTACT_EMAILS.general,
       replyTo: email,
       subject: `Nuevo contacto de ${name}`,
@@ -91,9 +88,15 @@ export async function POST(request: Request) {
       ]
         .filter(Boolean)
         .join("\n"),
-    });
-  } catch (error) {
-    console.error("Error enviando correo de contacto", error);
+    })
+    // El SDK de Resend no siempre lanza excepción: en varios casos de
+    // rechazo (ej. remitente no autorizado) devuelve { error } en vez de
+    // hacer throw. Por eso se revisa explícitamente más abajo, además
+    // de capturar fallas de red aquí.
+    .catch((error) => ({ data: null, error }));
+
+  if (sendError) {
+    console.error("Error enviando correo de contacto", sendError);
     return NextResponse.json(
       {
         error:
