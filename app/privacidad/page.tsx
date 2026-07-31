@@ -63,9 +63,16 @@ const recipients = [
     status: "activo" as const,
   },
   {
-    provider: "[FALTA: proveedor de hosting]",
+    provider: "Hetzner",
     function: "Alojamiento del Sitio y de Umami",
     data: "Datos técnicos de conexión",
+    status: "activo" as const,
+  },
+  {
+    provider: "LiveHost / Haulmer (cPanel)",
+    function:
+      "Gestión de DNS y correo empresarial — aquí se reciben los mensajes del formulario de contacto",
+    data: "Contenido de los correos recibidos (nombre, correo, teléfono, mensaje)",
     status: "activo" as const,
   },
   {
@@ -95,7 +102,7 @@ export default function Privacidad() {
             Política de privacidad
           </h1>
           <p className="mt-4 text-sm text-dim">
-            Última actualización: [FALTA: fecha de publicación]
+            Última actualización: 31-07-2026
           </p>
 
           <div className="reveal mt-8 rounded-2xl border border-dashed border-line/80 p-4 text-sm leading-6 text-dim">
@@ -109,9 +116,10 @@ export default function Privacidad() {
               <Heading>1. Responsable del tratamiento</Heading>
               <p className="mt-3">
                 <strong className="text-ink">Tenzor Labs SpA</strong> (en
-                adelante, &ldquo;Tenzor Labs&rdquo;), RUT [FALTA], con
-                domicilio en [FALTA], es responsable del tratamiento de los
-                datos personales recogidos a través de tenzorlabs.cl
+                adelante, &ldquo;Tenzor Labs&rdquo;), RUT 78.428.179-5, con
+                domicilio en General Sandino 3735, Conchalí, Santiago de
+                Chile, es responsable del tratamiento de los datos
+                personales recogidos a través de tenzorlabs.cl
                 (&ldquo;el Sitio&rdquo;).
               </p>
               <p className="mt-3">
@@ -321,12 +329,15 @@ export default function Privacidad() {
             <section>
               <Heading>6. Transferencia internacional de datos</Heading>
               <p className="mt-3">
-                <strong className="text-ink">Hoy:</strong> Resend puede
-                procesar datos fuera de Chile como parte de su servicio de
-                envío de correo. [FALTA: confirmar país(es) de
-                procesamiento y garantías de nivel de protección — verificar
-                con abogado]. Umami, al estar autohospedado, no genera
-                transferencia internacional.
+                <strong className="text-ink">Hoy:</strong> Resend, con sede
+                en Estados Unidos y certificación bajo el EU-US Data
+                Privacy Framework, procesa los datos del formulario
+                mediante subprocesadores ubicados en Estados Unidos
+                (incluyendo Amazon Web Services y Google, entre otros
+                descritos en resend.com/legal/subprocessors). Al enviar el
+                formulario, usted acepta esta transferencia internacional
+                de datos a Estados Unidos. Umami, al estar autohospedado,
+                no genera transferencia internacional.
               </p>
               <p className="mt-3">
                 <strong className="text-ink">A futuro (sección 2.5):</strong>{" "}
@@ -340,14 +351,40 @@ export default function Privacidad() {
 
             <section>
               <Heading>7. Plazo de conservación</Heading>
-              <p className="mt-3">
-                Conservamos los datos del formulario y de WhatsApp mientras
-                exista una relación comercial vigente o potencial, y por un
-                máximo de [FALTA: definir plazo, ej. 24 meses] desde el
-                último contacto, salvo obligación legal de conservarlos por
-                más tiempo. Los correos de suscripción al blog se conservan
-                hasta que usted se dé de baja.
-              </p>
+
+              <div className="mt-5 space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold tracking-[-0.02em] text-ink">
+                    7.1 Prospectos y consultas sin contrato vigente
+                  </h3>
+                  <p className="mt-2">
+                    Si su consulta a través del formulario, WhatsApp o
+                    correo no deriva en un contrato de servicios,
+                    conservamos sus datos por un máximo de 12 meses desde
+                    el último contacto, transcurrido el cual se eliminan
+                    de nuestros sistemas.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold tracking-[-0.02em] text-ink">
+                    7.2 Clientes con contrato vigente
+                  </h3>
+                  <p className="mt-2">
+                    Si su consulta deriva en un contrato de servicios con
+                    Tenzor Labs, sus datos se conservan durante toda la
+                    vigencia de la relación contractual, y posteriormente
+                    por el plazo que exija la normativa tributaria y
+                    contable chilena aplicable a la documentación de
+                    respaldo de servicios prestados [FALTA: confirmar
+                    plazo exacto con contador — referencia orientativa: 6
+                    años, plazo de prescripción extraordinaria del
+                    Servicio de Impuestos Internos]. Los correos de
+                    suscripción al blog (2.3) se conservan hasta que
+                    usted se dé de baja, independiente de lo anterior.
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section>
@@ -424,11 +461,12 @@ export default function Privacidad() {
               <Heading>11. Medidas de seguridad</Heading>
               <p className="mt-3">
                 Adoptamos medidas técnicas y organizativas razonables,
-                incluyendo [FALTA: detallar — conexión HTTPS, acceso
-                restringido a la casilla de correo, Umami autohospedado sin
-                exposición a terceros, etc.]. Ante cualquier incidente de
-                seguridad, notificaremos conforme a lo que exige la Ley
-                21.719.
+                incluyendo: conexión cifrada mediante HTTPS en todo el
+                Sitio, acceso restringido a la casilla de correo donde
+                llegan los mensajes del formulario, y analítica
+                autohospedada (Umami) sin exposición de datos a terceros.
+                Ante cualquier incidente de seguridad, notificaremos
+                conforme a lo que exige la Ley 21.719.
               </p>
             </section>
 
