@@ -1,15 +1,19 @@
+import Image from "next/image";
 import SectionEyebrow from "../section-eyebrow";
-
+import tendoImg from "@/public/tendo.png"
+import tendoPersonaImg from "@/public/tendoPersona.png"
 const proofs = [
   {
     name: "Tendo",
     description: "Software que diseñé y construí de cero.",
-    href: "#",
+    href: "https://tendo.cl/",
+    image: tendoImg
   },
   {
     name: "Tendo Personas",
     description: "Software que diseñé y construí de cero.",
-    href: "#",
+    href: "https://personas.tendo.cl/",
+    image: tendoPersonaImg
   },
 ];
 
@@ -31,8 +35,14 @@ export default function ProofSection() {
         <div className="reveal mt-14 grid gap-6 sm:grid-cols-2">
           {proofs.map((proof) => (
             <article className="signal-card" key={proof.name}>
-              <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-line/80 text-center text-sm text-dim">
-                [FALTA: captura real de {proof.name}]
+              <div className="relative aspect-video overflow-hidden rounded-2xl border border-line/80">
+                <Image
+                  src={proof.image}
+                  alt={`Captura de ${proof.name}`}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                />
               </div>
               <h3 className="mt-5 text-2xl font-semibold tracking-[-0.035em] text-ink">
                 {proof.name}
@@ -44,7 +54,7 @@ export default function ProofSection() {
                 className="mt-4 inline-flex items-center text-sm font-semibold text-aqua"
                 href={proof.href}
               >
-                Ver {proof.name} — [FALTA: URL real de la landing]
+                Ver {proof.name}
               </a>
             </article>
           ))}
